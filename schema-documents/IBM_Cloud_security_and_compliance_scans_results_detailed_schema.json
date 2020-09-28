@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IBM Cloud Compliance & Security Scan Summary Results",
+  "version": "0.1",
+  "type": "object",
+  "properties": {
+    "profile": { "type": "string" },
+    "control_number": { "type": "string" },
+    "IT_resource": {"type": "string", "format": "ip-address" },
+    "control_target": { "type": "string" },
+    "actual_value": { "type": "string" },
+    "expected_value": { "type": "string" },
+    "status": { "type": "string",
+                "enum": ["PASS", "FAIL"]
+              },
+    "detail": { "type": "string" }
+  },
+  "required": [
+    "profile",
+    "control_number",
+    "IT_resource",
+    "control_target",
+    "status",
+    "detail"
+  ]
+}

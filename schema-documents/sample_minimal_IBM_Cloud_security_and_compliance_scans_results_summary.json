@@ -1,0 +1,12 @@
+{
+  "profile": "CIS CentOS Linux 7 Benchmark 2.2.0",
+  "control_number": "1.1.1.1",
+  "description": "Ensure mounting of cramfs filesystems is disabled",
+  "severity": "low",
+  "result": "PASS",
+  "passed": 1,
+  "failed": 0,
+  "unable_to_perform" : 5,
+  "not_applicable": 3,
+  "total": 9
+}

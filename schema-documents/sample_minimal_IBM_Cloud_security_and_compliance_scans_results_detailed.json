@@ -1,0 +1,10 @@
+{
+  "profile": "CIS CentOS Linux 7 Benchmark 2.2.0",
+  "control_number": "6.1.11",
+  "IT_resource": "192",
+  "control_target": "centos",
+  "actual_value": "[false]",
+  "expected_value": "Unowned files or directories should not exist",
+  "status": "PASS",
+  "detail": "Unowned files or directories do not exist"
+}
