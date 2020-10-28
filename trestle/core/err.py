@@ -24,11 +24,37 @@ class TrestleError(RuntimeError):
         msg (str): The error message
     """
 
-    def __init__(self, msg):
+    def __init__(self, msg: str):
         """Intialization for TresleError."""
         RuntimeError.__init__(self)
         self.msg = msg
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Return Trestle error message if asked for a string."""
         return self.msg
+
+
+class TrestleNotFoundError(TrestleError):
+    """
+    General framwork related not found error.
+
+    Args:
+        msg (str): The error message
+    """
+
+    def __init__(self, msg: str):
+        """Intialization for TresleNotFoundError."""
+        super().__init__(msg)
+
+
+class TrestleValidationError(TrestleError):
+    """
+    General framwork related validation error.
+
+    Args:
+        msg (str): The error message
+    """
+
+    def __init__(self, msg: str):
+        """Intialization for TresleValidationError."""
+        super().__init__(msg)
