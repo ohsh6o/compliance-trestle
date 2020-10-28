@@ -1,0 +1,650 @@
+{
+    "title": "observations",
+    "type": "object",
+    "properties": {
+        "observations": {
+            "title": "Observations",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/observation"
+            }
+        }
+    },
+    "definitions": {
+        "Title": {
+            "title": "Title",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "Description": {
+            "title": "Description",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "Prop": {
+            "title": "Prop",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "description": "Identifying the purpose and intended use of the property, part or other object.",
+                    "type": "string"
+                },
+                "uuid": {
+                    "title": "Universally Unique Identifier",
+                    "description": "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "ns": {
+                    "title": "Namespace",
+                    "description": "A namespace qualifying the name.",
+                    "type": "string"
+                },
+                "class": {
+                    "title": "Class",
+                    "description": "Indicating the type or classification of the containing object",
+                    "type": "string"
+                },
+                "value": {
+                    "title": "Value",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "value"
+            ],
+            "additionalProperties": false
+        },
+        "Remarks": {
+            "title": "Remarks",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "Annotation": {
+            "title": "Annotation",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "description": "Identifying the purpose and intended use of the property, part or other object.",
+                    "type": "string"
+                },
+                "uuid": {
+                    "title": "Universally Unique Identifier",
+                    "description": "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "ns": {
+                    "title": "Namespace",
+                    "description": "A namespace qualifying the name.",
+                    "type": "string"
+                },
+                "value": {
+                    "title": "Value",
+                    "description": "Indicates the value of the characteristic.",
+                    "type": "string"
+                },
+                "remarks": {
+                    "$ref": "#/definitions/Remarks"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "ObservationMethod": {
+            "title": "ObservationMethod",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "ObservationType": {
+            "title": "ObservationType",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "Assessor": {
+            "title": "Assessor",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "party-uuid": {
+                    "title": "Party UUID",
+                    "description": "The UUID of the assessor who collected the evidence or made the observation.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "STRVALUE": {
+                    "title": "Strvalue",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "party-uuid",
+                "STRVALUE"
+            ],
+            "additionalProperties": false
+        },
+        "SubjectReference": {
+            "title": "SubjectReference",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid-ref": {
+                    "title": "UUID Reference",
+                    "description": "A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "Indicating the type of identifier, address, email or other data item.",
+                    "type": "string"
+                },
+                "title": {
+                    "$ref": "#/definitions/Title"
+                },
+                "props": {
+                    "title": "Props",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                }
+            },
+            "required": [
+                "uuid-ref",
+                "type"
+            ],
+            "additionalProperties": false
+        },
+        "Type1": {
+            "title": "Type1",
+            "description": "An enumeration.",
+            "enum": [
+                "tool",
+                "test-method",
+                "task",
+                "included-activity",
+                "other"
+            ]
+        },
+        "Origin": {
+            "title": "Origin",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid-ref": {
+                    "title": "UUID Reference",
+                    "description": "A pointer to a relevant item, using it's UUID.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/definitions/Type1"
+                },
+                "STRVALUE": {
+                    "title": "Strvalue",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "uuid-ref",
+                "type",
+                "STRVALUE"
+            ],
+            "additionalProperties": false
+        },
+        "RelevantEvidence": {
+            "title": "RelevantEvidence",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "href": {
+                    "title": "Href",
+                    "description": "Links to evidence as URI. May use a URI fragment to point to a resource in the back-matter.",
+                    "type": "string"
+                },
+                "description": {
+                    "$ref": "#/definitions/Description"
+                },
+                "properties": {
+                    "title": "Properties",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                },
+                "annotations": {
+                    "title": "Annotations",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Annotation"
+                    }
+                },
+                "remarks": {
+                    "$ref": "#/definitions/Remarks"
+                }
+            },
+            "required": [
+                "description"
+            ],
+            "additionalProperties": false
+        },
+        "RemediationOrigin": {
+            "title": "RemediationOrigin",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid-ref": {
+                    "title": "UUID Reference",
+                    "description": "A pointer to a relevant item, using it's UUID.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "Indicating the type of identifier, address, email or other data item.",
+                    "type": "string"
+                },
+                "STRVALUE": {
+                    "title": "Strvalue",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "uuid-ref",
+                "STRVALUE"
+            ],
+            "additionalProperties": false
+        },
+        "Required": {
+            "title": "Required",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid": {
+                    "title": "Universally Unique Identifier",
+                    "description": "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "subject-references": {
+                    "title": "Subject-References",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SubjectReference"
+                    }
+                },
+                "title": {
+                    "$ref": "#/definitions/Title"
+                },
+                "description": {
+                    "$ref": "#/definitions/Description"
+                },
+                "properties": {
+                    "title": "Properties",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                },
+                "annotations": {
+                    "title": "Annotations",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Annotation"
+                    }
+                },
+                "remarks": {
+                    "$ref": "#/definitions/Remarks"
+                }
+            },
+            "required": [
+                "uuid",
+                "description"
+            ],
+            "additionalProperties": false
+        },
+        "SetParameter": {
+            "title": "SetParameter",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "value": {
+                    "$ref": "#/definitions/Value"
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "additionalProperties": false
+        },
+        "Value": {
+            "title": "Value",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "Start": {
+            "title": "Start",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "format": "date-time",
+            "additionalProperties": false
+        },
+        "End": {
+            "title": "End",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "format": "date-time",
+            "additionalProperties": false
+        },
+        "ActivityUuid": {
+            "title": "ActivityUuid",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "RoleId": {
+            "title": "RoleId",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "PartyUuid": {
+            "title": "PartyUuid",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "LocationUuid": {
+            "title": "LocationUuid",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "CompareTo": {
+            "title": "CompareTo",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "string",
+            "additionalProperties": false
+        },
+        "Task": {
+            "title": "Task",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid": {
+                    "title": "Universally Unique Identifier",
+                    "description": "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "title": {
+                    "$ref": "#/definitions/Title"
+                },
+                "description": {
+                    "$ref": "#/definitions/Description"
+                },
+                "properties": {
+                    "title": "Properties",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                },
+                "annotations": {
+                    "title": "Annotations",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Annotation"
+                    }
+                },
+                "start": {
+                    "$ref": "#/definitions/Start"
+                },
+                "end": {
+                    "$ref": "#/definitions/End"
+                },
+                "activity-uuids": {
+                    "title": "Activity-Uuids",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ActivityUuid"
+                    }
+                },
+                "role-ids": {
+                    "title": "Role-Ids",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RoleId"
+                    }
+                },
+                "party-uuids": {
+                    "title": "Party-Uuids",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PartyUuid"
+                    }
+                },
+                "location-uuids": {
+                    "title": "Location-Uuids",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LocationUuid"
+                    }
+                },
+                "compare-to": {
+                    "$ref": "#/definitions/CompareTo"
+                },
+                "remarks": {
+                    "$ref": "#/definitions/Remarks"
+                }
+            },
+            "required": [
+                "uuid"
+            ],
+            "additionalProperties": false
+        },
+        "Schedule": {
+            "title": "Schedule",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid": {
+                    "title": "Universally Unique Identifier",
+                    "description": "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "tasks": {
+                    "title": "Tasks",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Task"
+                    }
+                }
+            },
+            "required": [
+                "tasks"
+            ],
+            "additionalProperties": false
+        },
+        "Remediation": {
+            "title": "Remediation",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid": {
+                    "title": "Universally Unique Identifier",
+                    "description": "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "Indicating the type of identifier, address, email or other data item.",
+                    "type": "string"
+                },
+                "title": {
+                    "$ref": "#/definitions/Title"
+                },
+                "description": {
+                    "$ref": "#/definitions/Description"
+                },
+                "properties": {
+                    "title": "Properties",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                },
+                "annotations": {
+                    "title": "Annotations",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Annotation"
+                    }
+                },
+                "origins": {
+                    "title": "Origins",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RemediationOrigin"
+                    }
+                },
+                "requirements": {
+                    "title": "Requirements",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Required"
+                    }
+                },
+                "schedule": {
+                    "$ref": "#/definitions/Schedule"
+                },
+                "remarks": {
+                    "$ref": "#/definitions/Remarks"
+                }
+            },
+            "required": [
+                "uuid",
+                "title",
+                "description"
+            ],
+            "additionalProperties": false
+        },
+        "observation": {
+            "title": "observation",
+            "description": "Base model which overrides defaults for all OSCAL classes.",
+            "type": "object",
+            "properties": {
+                "uuid": {
+                    "title": "Universally Unique Identifier",
+                    "description": "A RFC 4122 version 4 Universally Unique Identifier (UUID) for the containing object.",
+                    "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+                    "type": "string"
+                },
+                "title": {
+                    "$ref": "#/definitions/Title"
+                },
+                "description": {
+                    "$ref": "#/definitions/Description"
+                },
+                "properties": {
+                    "title": "Properties",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                },
+                "annotations": {
+                    "title": "Annotations",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Annotation"
+                    }
+                },
+                "observation-methods": {
+                    "title": "Observation-Methods",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ObservationMethod"
+                    }
+                },
+                "observation-types": {
+                    "title": "Observation-Types",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ObservationType"
+                    }
+                },
+                "assessors": {
+                    "title": "Assessors",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Assessor"
+                    }
+                },
+                "subject-references": {
+                    "title": "Subject-References",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SubjectReference"
+                    }
+                },
+                "origins": {
+                    "title": "Origins",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Origin"
+                    }
+                },
+                "evidence-group": {
+                    "title": "Evidence-Group",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RelevantEvidence"
+                    }
+                },
+                "parameter-settings": {
+                    "title": "Parameter-Settings",
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/SetParameter"
+                    }
+                },
+                "remarks": {
+                    "$ref": "#/definitions/Remarks"
+                },
+                "remediation-group": {
+                    "title": "Remediation Group",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Remediation"
+                    }
+                }
+            },
+            "required": [
+                "uuid",
+                "description",
+                "observation-methods"
+            ],
+            "additionalProperties": false
+        }
+    }
+}
